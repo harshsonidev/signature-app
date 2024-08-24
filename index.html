@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Signature App</title>
+</head>
+<style>
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+</style>
+
+<body>
+  <main class="h-dvh w-full">
+    <div class="w-full h-full flex flex-col justify-center items-center gap-5 ">
+      <div class="flex justify-between w-[800px]">
+        <div class="flex space-x-2">
+          <div class="relative dropdown">
+            <button class="px-4 py-2 border border-black rounded">BG Color</button>
+            <div class="dropdown-content">
+              <a href="#" onclick="setBgColor('white')" style="background-color: white;">White</a>
+              <a href="#" onclick="setBgColor('lightgray')" style="background-color: lightgray;">Light Gray</a>
+              <a href="#" onclick="setBgColor('lightblue')" style="background-color: lightblue;">Light Blue</a>
+              <a href="#" onclick="setBgColor('lightgreen')" style="background-color: lightgreen;">Light Green</a>
+            </div>
+          </div>
+          <div class="relative dropdown">
+            <button class="px-4 py-2 border border-black rounded">Text Color</button>
+            <div class="dropdown-content">
+              <a href="#" onclick="setTextColor('black')" style="color: black;">Black</a>
+              <a href="#" onclick="setTextColor('red')" style="color: red;">Red</a>
+              <a href="#" onclick="setTextColor('blue')" style="color: blue;">Blue</a>
+              <a href="#" onclick="setTextColor('green')" style="color: green;">Green</a>
+            </div>
+          </div>
+        </div>
+        <button onclick="saveSignature()" class="px-4 py-2 bg-green-500 text-white rounded">Download</button>
+      </div>
+
+      <div class="border-[2px] border-black w-[800px] h-[400px] overflow-hidden rounded-lg">
+        <canvas id="signatureCanvas" width="795" height="395"></canvas>
+      </div>
+
+      <div class="flex justify-between w-[800px]">
+        <button onclick="resetCanvas()" class="px-4 py-2 bg-red-500 text-white rounded">Reset</button>
+        <button onclick="restartSignature()" class="px-4 py-2 bg-purple-500 text-white rounded">Start Over</button>
+      </div>
+    </div>
+  </main>
+</body>
+
+<script src="./script.js"></script>
+
+</html>
